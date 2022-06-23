@@ -50,3 +50,26 @@ Route::get('/students/edit/{id}',[App\Http\Controllers\StudentController::class 
 Route::put('/students/{update}',[App\Http\Controllers\StudentController::class ,'update'])->name('students.update');
 Route::get('/students/show/{id}',[App\Http\Controllers\StudentController::class ,'show'])->name('students.show');
 Route::delete('/students/{destroy}',[App\Http\Controllers\StudentController::class ,'destroy'])->name('students.destroy');
+
+
+
+//Sections Route
+
+Route::get('/courses',[App\Http\Controllers\CourseController::class ,'index'])->name('courses.index');
+Route::get('/courses.create',[App\Http\Controllers\CourseController::class ,'create'])->name('courses.create');
+Route::post('/courses',[App\Http\Controllers\CourseController::class ,'store'])->name('courses.store');
+Route::get('/courses/edit/{id}',[App\Http\Controllers\CourseController::class ,'edit'])->name('courses.edit');
+Route::put('/courses/{update}',[App\Http\Controllers\CourseController::class ,'update'])->name('courses.update');
+Route::get('/courses/show/{id}',[App\Http\Controllers\CourseController::class ,'show'])->name('courses.show');
+Route::delete('/courses/{destroy}',[App\Http\Controllers\CourseController::class ,'destroy'])->name('courses.destroy');
+
+
+//Subjects Route
+
+Route::get('/subjects',[App\Http\Controllers\SubjectController::class ,'index'])->name('subjects.index');
+Route::get('/subjects.create',[App\Http\Controllers\SubjectController::class ,'create'])->name('subjects.create');
+Route::post('/subjects',[App\Http\Controllers\SubjectController::class ,'store'])->name('subjects.store');
+Route::get('/subjects/edit/{id}',[App\Http\Controllers\SubjectController::class ,'edit'])->name('subjects.edit');
+Route::put('/subjects/{update}',[App\Http\Controllers\SubjectController::class ,'update'])->name('subjects.update');
+
+Route::delete('/subjects/{destroy}',[App\Http\Controllers\SubjectController::class ,'destroy'])->name('subjects.destroy');

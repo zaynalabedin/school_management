@@ -13,18 +13,11 @@ class TeacherController extends Controller
     public function index()
     {
 
-        // $users =User::find(1)->teacher;
-        // dd($users);
-        // $users=User::with('teacher')->get();
-        $teachers=Teacher::with('user')->get();
-// dd($teachers);
-        // dd($users);
-        // $teachers = DB::table('users')
-        //     ->join('teachers', 'users.id', '=', 'teachers.user_id')
 
-        //     ->get();
+        $teachers=Teacher::with('user')->get();
+
         return view('teachers.index', compact('teachers'));
-        // return view('teachers.index', compact('users'));
+
     }
     public function create()
     {
@@ -127,13 +120,13 @@ class TeacherController extends Controller
 
     }
     public function destroy($id)
-    {        
-        
+    {
+
         $teachers= User::find($id);
         // dd($teachers);
         $teachers->delete();
-        
-        
+
+
         $teachers= Teacher::find($id);
         // dd($teachers);
         $teachers->delete();

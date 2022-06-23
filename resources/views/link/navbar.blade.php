@@ -38,27 +38,27 @@
             </div>
         </li>
 
-        
+
         <li class="nav-item dropdown">
             {{-- <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true"
                     href="#" role="button">
                     <i class="fas fa-th-large"></i>
                 </a> --}}
             <a class="nav-link" data-toggle="dropdown" href="#">
-                {{-- {{ Auth::user()->name }} --}}
+                {{ Auth::user()->name }}
 
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
-                    
 
-                        <p class="dropdown-item" type="submit">Logout</p> 
-    
-                    
+
+                    <button type="submit">Logout</button>
+
+
                 </form>
-                
+
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">
                     <i class="fas fa-users mr-2"></i>Profile

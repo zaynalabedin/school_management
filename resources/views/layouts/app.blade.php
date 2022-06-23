@@ -11,17 +11,17 @@
     <div class="wrapper">
 
         <!-- Preloader -->
-        
+
         {{-- <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="{{ asset('public/img/AdminLTELogo.png') }}" alt="AdminLTELogo"
                 height="60" width="60">
         </div> --}}
-        
 
-            
-            
+
+
+
                 <!-- Navbar -->
-                {{-- @guest
+                @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -33,7 +33,7 @@
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
-                @else --}}
+                @else
                     @include('link.navbar')
                     <!-- /.navbar -->
 
@@ -42,14 +42,14 @@
 
                     <!-- Main Sidebar Container -->
                     @include('link.mainsidebar')
-                {{-- @endguest --}}
-            
+                @endguest
 
-        
+
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <div class="content-header">
+            {{-- <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
@@ -63,7 +63,7 @@
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
-            </div>
+            </div> --}}
             <!-- /.content-header -->
 
             <!-- Main content -->

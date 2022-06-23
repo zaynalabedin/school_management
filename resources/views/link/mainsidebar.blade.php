@@ -59,6 +59,36 @@
                                 <p>Students</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ Route('courses.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Classes</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ Route('subjects.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Subjects</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Exam</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Marks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Exam Question</p>
+                            </a>
+                        </li>
 
                     </ul>
                 </li>
