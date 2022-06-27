@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 @section('content')
-    
+
 
 <div class="row">
     <div class="col-sm-3"></div>
@@ -9,7 +9,7 @@
         <div class="card">
             {{-- action="{{ route('teachers.store') }}" method="POST" enctype="multipart/form-data" --}}
             <div class="card-body">
-                <form action="{{ route('teachers.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('teachers.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                     @csrf
                     <div class="form-group">
                         <label>Name</label>

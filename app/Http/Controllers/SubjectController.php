@@ -10,23 +10,26 @@ class SubjectController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::get();
+        // $subjects = Course::get();
+        $subjects = Subject::with('course')->get();
         return view('subjects.index', compact('subjects'));
     }
 
     public function create()
     {
-        return view('subjects.create');
+        $courses= Course::get();
+        return view('subjects.create',compact('courses'));
     }
-    public function store(Request $request,Course $course)
+    public function store(Request $request)
     {
         // $course= new Course();
 
         $subjects = new Subject();
 
+        $subjects->course_id=$request->input('choosed');
 
         $subjects->name = $request->input('name');
-        
+// dd($subjects);
         $subjects->save();
 
         return redirect('subjects');
@@ -40,6 +43,7 @@ class SubjectController extends Controller
     public function update(Request $request, $id)
     {
         $subject = Subject::find($id);
+        $subject->course_id=$request->input('choosed');
         $subject->name = $request->input('name');
         $subject->save();
 

@@ -42,11 +42,11 @@ return [
         ],
         'admin' => [
             'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'users',
         ],
         'teacher' => [
             'driver' => 'session',
-            'provider' => 'teacher',
+            'provider' => 'users',
         ],
         'student' => [
             'driver' => 'session',
@@ -77,13 +77,13 @@ return [
             'model' => App\Models\User::class,
         ],
         'teachers' => [
-            'driver' => 'database',
+            'driver' => 'eloquent',
             'table' => App\Models\User::class,
         ],
-        // 'students' => [
-        //     'driver' => 'database',
-        //     'table' => App\Models\Student::class,
-        // ],
+        'students' => [
+            'driver' => 'eloquent',
+            'table' => App\Models\Student::class,
+        ],
     ],
 
     /*

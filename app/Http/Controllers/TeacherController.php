@@ -2,19 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Teacher;
-use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class TeacherController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        
+    }
+    public function dashboard()
+    {
+        return view('teachers.dashboard');
+    }
     public function index()
     {
 
-
-        $teachers=Teacher::with('user')->get();
+        $teachers = Teacher::with('user')->get();
 
         return view('teachers.index', compact('teachers'));
 
@@ -35,8 +44,6 @@ class TeacherController extends Controller
             'permanent_address',
 
         ]);
-
-
 
         $users = new User();
 
@@ -63,17 +70,17 @@ class TeacherController extends Controller
         return redirect('teachers');
     }
 
-    public function show($id){
-
+    public function show($id)
+    {
 
         // $data = DB::table('users')
         //     ->join('teachers', 'users.id', '=', 'teachers.user_id')
         //     ->where('teachers.id','=',$id)
         //     ->first();
-            // dd($data);
-            $data =User::with('teacher')->where('id',$id)->first();
-            // dd($data);
-        return view('teachers.show',compact('data'));
+        // dd($data);
+        $data = User::with('teacher')->where('id', $id)->first();
+        // dd($data);
+        return view('teachers.show', compact('data'));
     }
 
     public function edit($id)
@@ -82,7 +89,6 @@ class TeacherController extends Controller
         // dd($user);
         return view('teachers.edit', compact('user'));
     }
-
 
     public function update(Request $request, $id)
     {
@@ -122,12 +128,11 @@ class TeacherController extends Controller
     public function destroy($id)
     {
 
-        $teachers= User::find($id);
+        $teachers = User::find($id);
         // dd($teachers);
         $teachers->delete();
 
-
-        $teachers= Teacher::find($id);
+        $teachers = Teacher::find($id);
         // dd($teachers);
         $teachers->delete();
         return back();

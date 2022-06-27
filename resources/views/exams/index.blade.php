@@ -1,28 +1,28 @@
 @extends('layouts.app')
 @section('content')
     {{-- @include('links.navbar') --}}
-    <a class="btn btn-primary mt-3 mb-3" href="{{ route('subjects.create') }}">Add New Subject</a>
+    <a class="btn btn-primary mt-3 mb-3" href="{{ route('exams.create') }}">Add New Exam</a>
     <div class="card">
         <div class="card-body">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Class Name</th>
-                        <th scope="col">Subject Name</th>
+                        <th scope="col">Exam Name</th>
+                        {{-- <th scope="col">Section Name</th> --}}
 
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($subjects as $subject)
+                    @foreach ($exams as $exam)
                         <tr>
-                            <td>{{ $subject->course->name }}</td>
-                            <td>{{ $subject->name }}</td>
+                            {{-- <td>{{ $exam->course->name }}</td> --}}
+                            <td>{{ $exam->name }}</td>
 
                             <td>
-                                <form class="mt-2" action="{{ route('subjects.destroy', $subject->id) }}" method="POST">
+                                <form class="mt-2" action="{{ route('exams.destroy', $exam->id) }}" method="POST">
 
-                                    <a class="btn btn-warning" href="{{ route('subjects.edit', $subject->id) }}"
+                                    <a class="btn btn-warning" href="{{ route('exams.edit', $exam->id) }}"
                                         >Edit</a>
                                     @csrf
                                     @method('DELETE')

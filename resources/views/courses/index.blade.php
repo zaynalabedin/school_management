@@ -15,7 +15,7 @@
                 <tbody>
                     @foreach ($courses as $course)
                         <tr>
-
+                            
                             <td>{{ $course->name }}</td>
 
                             <td>

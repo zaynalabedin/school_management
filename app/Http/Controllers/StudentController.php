@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
+    public function dashboard()
+    {
+        return view('students.dashboard');
+    }
     public function index()
     {
         $students = Student::get();
