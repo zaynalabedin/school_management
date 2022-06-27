@@ -19,7 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->foreignId('subject_id');
             $table->foreignId('exam_id');
             $table->string('name');
-            $table->string('')
+            $table->string('');
             $table->timestamps();
         });
     }

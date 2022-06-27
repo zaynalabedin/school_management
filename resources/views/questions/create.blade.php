@@ -28,7 +28,7 @@
                         <label>Subject Name</label>
                         <select name="choosed" class="custom-select" id="inputGroupSelect01">
                             <option selected>Choose...</option>
-                            @foreach ($courses as $subject)
+                            @foreach ($subjects as $subject)
                                 <option value="{{ $subject->id }}">{{ $subject->name }}</option>
                             @endforeach
                         </select>
@@ -39,11 +39,11 @@
                             @enderror
                         </span>
                     </div>
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <label>Exam Name</label>
                         <select name="choosed" class="custom-select" id="inputGroupSelect01">
                             <option selected>Choose...</option>
-                            @foreach ($courses as $exam)
+                            @foreach ($exams as $exam)
                                 <option value="{{ $exam->id }}">{{ $exam->name }}</option>
                             @endforeach
                         </select>
@@ -53,7 +53,7 @@
                                 {{ $message }}
                             @enderror
                         </span>
-                    </div> --}}
+                    </div>
 
                     {{-- <div class="form-group">
                         <label>Images</label>

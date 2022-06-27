@@ -20,10 +20,11 @@ class QuestionController extends Controller
     }
     public function create()
     {
-        $courses= Question::with('course','subject')->get();
-        // $courses = Course::get();
-        // $subjects = Subject::get();
-        return view('questions.create',compact('courses'));
+        // $courses= Question::with('course','subject')->get();
+        $courses = Course::get();
+        $subjects = Subject::get();
+        $exams = Exam::get();
+        return view('questions.create',compact('courses','subjects','exams'));
     }
 
     public function destroy($id)

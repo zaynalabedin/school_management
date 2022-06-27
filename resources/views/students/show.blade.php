@@ -7,18 +7,19 @@
             <div class="col-sm-8">
                 <div class="card">
                     <div class="card-body">
-                        <p><img src="{{ asset('public/images/'.$data->images) }}" style="height: 80px; width:90px;"></p>
-                        <p>{{ $data->name }}</p>
-                        <p>{{ $data->email }}</p>
-                        <p>{{ $data->number }}</p>
-                        <p>{{ $data->date_of_birth }}</p>
-                        <p>{{ $data->current_addres }}</p>
-                        <p>{{ $data->permanent_address }}</p>
-                        
+                        <p><img src="{{ asset('public/images/'.$student->user->image) }}" style="height: 80px; width:90px;"></p>
+                        <p>Name: {{ $student->user->name }}</p>
+                        <p>Email: {{ $student->user->email }}</p>
+                        <p>Student Id: {{ $student->student_id }}</p>
+                        <p>Phone Number: {{ $student->number }}</p>
+                        <p>Date of Birth: {{ $student->date_of_birth }}</p>
+                        <p>{{ $student->current_addres }}</p>
+                        <p>{{ $student->permanent_address }}</p>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
 @endsection

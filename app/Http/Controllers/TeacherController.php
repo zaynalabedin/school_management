@@ -14,7 +14,7 @@ class TeacherController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        
+
     }
     public function dashboard()
     {
@@ -49,6 +49,7 @@ class TeacherController extends Controller
 
         $users->name = $request->input('name');
         $users->email = $request->input('email');
+        $users->user_type = 'teacher';
         $users->password = Hash::make($request->input('password'));
         if ($request->hasFile('image')) {
             $images = $request->file('image');
@@ -73,20 +74,16 @@ class TeacherController extends Controller
     public function show($id)
     {
 
-        // $data = DB::table('users')
-        //     ->join('teachers', 'users.id', '=', 'teachers.user_id')
-        //     ->where('teachers.id','=',$id)
-        //     ->first();
-        // dd($data);
+
         $data = User::with('teacher')->where('id', $id)->first();
-        // dd($data);
+
         return view('teachers.show', compact('data'));
     }
 
     public function edit($id)
     {
         $user = User::with('teacher')->where('id', $id)->first();
-        // dd($user);
+
         return view('teachers.edit', compact('user'));
     }
 
@@ -129,11 +126,11 @@ class TeacherController extends Controller
     {
 
         $teachers = User::find($id);
-        // dd($teachers);
+
         $teachers->delete();
 
         $teachers = Teacher::find($id);
-        // dd($teachers);
+
         $teachers->delete();
         return back();
 

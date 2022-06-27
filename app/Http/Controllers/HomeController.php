@@ -31,6 +31,8 @@ class HomeController extends Controller
         }
         elseif (Auth::user()->user_type == 'teacher') {
             return redirect()->route('teachers.dashboard');
+        }elseif (Auth::user()->user_type == 'student') {
+            return redirect()->route('students.dashboard');
         }
 
 
@@ -38,5 +40,5 @@ class HomeController extends Controller
     }
 
 
-    
+
 }

@@ -9,6 +9,7 @@
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Student ID</th>
                         <th scope="col">Number</th>
                         <th scope="col">Date of Birth</th>
                         <th scope="col">Current Address</th>
@@ -21,14 +22,15 @@
                     @foreach ($students as $student)
                         <tr>
 
-                            <td>{{ $student->name }}</td>
-                            <td>{{ $student->email }}</td>
+                            <td>{{ $student->user->name }}</td>
+                            <td>{{ $student->user->email }}</td>
+                            <td>{{ $student->student_id }}</td>
                             <td>{{ $student->number }}</td>
                             <td>{{ $student->date_of_birth }}</td>
                             <td>{{ $student->current_addres }}</td>
                             <td>{{ $student->permanent_address }}</td>
                             <td>
-                                <img src="{{ asset('public/images/' . $student->images) }}"
+                                <img src="{{ asset('public/images/' . $student->user->image) }}"
                                     style="height: 80px; width:120px;">
                             </td>
                             <td>

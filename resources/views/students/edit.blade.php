@@ -5,14 +5,14 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
         <div class="card">
-            {{-- action="{{ route('teachers.store') }}" method="POST" enctype="multipart/form-data" --}}
+           
             <div class="card-body">
                 <form action="{{ route('students.update',$student->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" name="name" value="{{ $student->name }}" class="form-control">
+                        <input type="text" name="name" value="{{ $student->user->name }}" class="form-control">
                         <span class="text-danger">
                             @error('name')
                                 {{ $message }}
@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" name="email" value="{{ $student->email }}" class="form-control">
+                        <input type="email" name="email" value="{{ $student->user->email }}" class="form-control">
                         <span class="text-danger">
                             @error('email')
                                 {{ $message }}
@@ -33,6 +33,15 @@
                         <input type="password" name="password" class="form-control">
                         <span class="text-danger">
                             @error('password')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Student ID</label>
+                        <input type="text" name="student_id" value="{{ $student->student_id }}" class="form-control">
+                        <span class="text-danger">
+                            @error('student_id')
                                 {{ $message }}
                             @enderror
                         </span>
@@ -77,7 +86,7 @@
                     <div class="form-group">
                         <label>Images</label>
                         <input type="file" name="images" class="form-control-file">
-                        <img src="{{ asset('public/images/'.$student->images) }}" style="height: 80px; width:120px;">
+                        <img src="{{ asset('public/images/'.$student->user->image) }}" style="height: 80px; width:120px;">
                         <span class="text-danger">
                             @error('images')
                                 {{ $message }}

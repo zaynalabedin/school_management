@@ -11,7 +11,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" name="name" class="form-control" placeholder="Enter Name">
+                        <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Enter Name">
                         <span class="text-danger">
                             @error('name')
                                 {{ $message }}
@@ -20,7 +20,7 @@
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" name="email" class="form-control" placeholder="Enter Email">
+                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Email">
                         <span class="text-danger">
                             @error('email')
                                 {{ $message }}
@@ -37,8 +37,17 @@
                         </span>
                     </div>
                     <div class="form-group">
+                        <label>Student ID</label>
+                        <input type="text" name="student_id" value="{{ old('student_id') }}" class="form-control" placeholder="Student Id">
+                        <span class="text-danger">
+                            @error('student_id')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="form-group">
                         <label>Phone</label>
-                        <input type="text" name="number" class="form-control" placeholder="Number">
+                        <input type="text" name="number" value="{{ old('number') }}" class="form-control" placeholder="Number">
                         <span class="text-danger">
                             @error('number')
                                 {{ $message }}
@@ -48,7 +57,7 @@
 
                     <div class="form-group">
                         <label>Date of birth</label>
-                        <input type="date" name="date_of_birth" class="form-control" placeholder="Date of Birth">
+                        <input type="date" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control" placeholder="Date of Birth">
                         <span class="text-danger">
                             @error('date_of_birth')
                                 {{ $message }}
@@ -57,7 +66,7 @@
                     </div>
                     <div class="form-group">
                         <label>Current Address</label>
-                        <input type="text" name="current_addres" class="form-control" placeholder="Current Address">
+                        <input type="text" name="current_addres" value="{{ old('current_addres') }}" class="form-control" placeholder="Current Address">
                         <span class="text-danger">
                             @error('current_addres')
                                 {{ $message }}
@@ -66,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label>Permanent Address</label>
-                        <input type="text" name="permanent_address" class="form-control" placeholder="Permanent Address">
+                        <input type="text" name="permanent_address" value="{{ old('permanent_address') }}" class="form-control" placeholder="Permanent Address">
                         <span class="text-danger">
                             @error('permanent_address')
                                 {{ $message }}
@@ -74,10 +83,10 @@
                         </span>
                     </div>
                     <div class="form-group">
-                        <label>Images</label>
-                        <input type="file" name="images" class="form-control-file">
+                        <label>Image</label>
+                        <input type="file" name="image" class="form-control-file">
                         <span class="text-danger">
-                            @error('images')
+                            @error('image')
                                 {{ $message }}
                             @enderror
                         </span>

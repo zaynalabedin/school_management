@@ -9,17 +9,16 @@ class Student extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'roll',
-        'password',
+        'student_id',
         'number',
         'date_of_birth',
         'current_addres',
         'permanent_address',
-        'images',
+
     ];
-    protected $hidden = [
-        'password',
-        'remember_token'
-    ];
+    
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
