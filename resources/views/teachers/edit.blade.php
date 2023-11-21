@@ -7,13 +7,13 @@
         <div class="card">
             {{-- action="{{ route('teachers.store') }}" method="POST" enctype="multipart/form-data" --}}
             <div class="card-body">
-                <form action="{{ route('teachers.update',$user->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('teachers.update',$teacher->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
                     {{-- <input type="hidden" name="id" value="{{ $user->id }}"> --}}
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" name="name" value="{{ $user->name }}" class="form-control">
+                        <input type="text" name="name" value="{{ $teacher->user->name }}" class="form-control">
                         <span class="text-danger">
                             @error('name')
                                 {{ $message }}
@@ -21,26 +21,37 @@
                         </span>
                     </div>
                     <div class="form-group">
+                        <label>Designation</label>
+                        <input type="text" name="designation" value="{{ $teacher->designation->name }}" class="form-control">
+                        <span class="text-danger">
+                            @error('designation')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Department</label>
+                        <input type="text" name="department" value="{{ $teacher->department->name }}" class="form-control">
+                        <span class="text-danger">
+                            @error('department')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+
+                    <div class="form-group">
                         <label>Email address</label>
-                        <input type="email" name="email" value="{{ $user->email }}" class="form-control">
+                        <input type="email" name="email" value="{{ $teacher->user->email }}" class="form-control">
                         <span class="text-danger">
                             @error('email')
                                 {{ $message }}
                             @enderror
                         </span>
                     </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control">
-                        <span class="text-danger">
-                            @error('password')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
+
                     <div class="form-group">
                         <label>Phone</label>
-                        <input type="text" name="number" value="{{ $user->teacher->number }}" class="form-control">
+                        <input type="text" name="number" value="{{ $teacher->number }}" class="form-control">
                         <span class="text-danger">
                             @error('number')
                                 {{ $message }}
@@ -50,7 +61,7 @@
 
                     <div class="form-group">
                         <label>Date of birth</label>
-                        <input type="date" name="date_of_birth" value="{{ $user->teacher->date_of_birth }}" class="form-control">
+                        <input type="date" name="date_of_birth" value="{{ $teacher->date_of_birth }}" class="form-control">
                         <span class="text-danger">
                             @error('date_of_birth')
                                 {{ $message }}
@@ -59,7 +70,7 @@
                     </div>
                     <div class="form-group">
                         <label>Current Address</label>
-                        <input type="text" name="current_addres" value="{{ $user->teacher->current_addres }}" class="form-control" >
+                        <input type="text" name="current_addres" value="{{ $teacher->current_addres }}" class="form-control" >
                         <span class="text-danger">
                             @error('current_addres')
                                 {{ $message }}
@@ -68,7 +79,7 @@
                     </div>
                     <div class="form-group">
                         <label>Permanent Address</label>
-                        <input type="text" name="permanent_address" value="{{ $user->teacher->permanent_address }}" class="form-control">
+                        <input type="text" name="permanent_address" value="{{ $teacher->permanent_address }}" class="form-control">
                         <span class="text-danger">
                             @error('permanent_address')
                                 {{ $message }}
@@ -79,7 +90,7 @@
                         <label>Image</label>
 
                         <input type="file" name="image" class="form-control-file">
-                        <img src="{{ asset('public/images/'.$user->image) }}" style="height:80px; width:120px; ">
+                        <img src="{{ asset('public/images/'.$teacher->user->image) }}" style="height:80px; width:120px; ">
                         <span class="text-danger">
                             @error('image')
                                 {{ $message }}

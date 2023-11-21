@@ -5,7 +5,7 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
         <div class="card">
-           
+
             <div class="card-body">
                 <form action="{{ route('students.update',$student->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -38,10 +38,10 @@
                         </span>
                     </div>
                     <div class="form-group">
-                        <label>Student ID</label>
-                        <input type="text" name="student_id" value="{{ $student->student_id }}" class="form-control">
+                        <label>Roll Number</label>
+                        <input type="text" name="roll" value="{{ $student->roll }}" class="form-control">
                         <span class="text-danger">
-                            @error('student_id')
+                            @error('roll')
                                 {{ $message }}
                             @enderror
                         </span>

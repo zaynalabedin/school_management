@@ -21,6 +21,25 @@
                         </span>
                     </div>
                     <div class="form-group">
+                        <label>Designation</label>
+                        <select name="designation" class="custom-select" id="inputGroupSelect01">
+                            <option selected>Choose...</option>
+                            @foreach ($designations as $designation)
+                                <option value="{{ $designation->id }}">{{ $designation->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Department</label>
+                        <select name="department" class="custom-select" id="inputGroupSelect01">
+                            <option selected>Choose...</option>
+                            @foreach ($departments as $department)
+                                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label>Email</label>
                         <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Email">
                         <span class="text-danger">

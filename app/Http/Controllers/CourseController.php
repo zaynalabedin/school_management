@@ -8,6 +8,11 @@ use App\Models\Subject;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
     public function index()
     {
         $courses = Course::get();
@@ -34,7 +39,7 @@ class CourseController extends Controller
 
         $subjects=Subject::all();
 
-        
+
         return view('courses.show', compact('course','subjects'));
     }
     public function edit($id)
@@ -50,7 +55,7 @@ class CourseController extends Controller
         $course->name = $request->input('name');
         $course->save();
 
-        return redirect()->back();
+        return redirect('courses');
     }
     public function destroy($id)
     {

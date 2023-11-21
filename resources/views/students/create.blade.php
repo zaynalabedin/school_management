@@ -37,13 +37,33 @@
                         </span>
                     </div>
                     <div class="form-group">
-                        <label>Student ID</label>
-                        <input type="text" name="student_id" value="{{ old('student_id') }}" class="form-control" placeholder="Student Id">
+                        <label>Roll Number</label>
+                        <input type="text" name="roll" value="{{ old('roll') }}" class="form-control" placeholder="Roll Number">
                         <span class="text-danger">
-                            @error('student_id')
+                            @error('roll')
                                 {{ $message }}
                             @enderror
                         </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Class Name</label>
+                        <select name="choosedClass" class="custom-select" id="inputGroupSelect01">
+                            <option selected>Choose...</option>
+                            @foreach ($courses as $course )
+                            <option value="{{ $course->id }}" >{{ $course->name }}</option>
+                            @endforeach
+                          </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Section</label>
+                        <select name="choosed" class="custom-select" id="inputGroupSelect01">
+                            <option selected>Choose...</option>
+                            @foreach ($sections as $section )
+                            <option value="{{ $section->id }}" >{{ $section->name }}</option>
+                            @endforeach
+                          </select>
+
                     </div>
                     <div class="form-group">
                         <label>Phone</label>

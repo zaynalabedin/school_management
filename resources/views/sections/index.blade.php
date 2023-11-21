@@ -7,7 +7,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Class Name</th>
+                        
                         <th scope="col">Section Name</th>
 
                         <th scope="col">Action</th>
@@ -16,7 +16,7 @@
                 <tbody>
                     @foreach ($sections as $section)
                         <tr>
-                            <td>{{ $section->course->name }}</td>
+
                             <td>{{ $section->name }}</td>
 
                             <td>

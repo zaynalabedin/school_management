@@ -12,7 +12,9 @@ class Section extends Model
         'name',
     ];
 
-    public function course(){
-        return $this->belongsTo(Course::class);
+    
+    public function student()
+    {
+        return $this->hasOne(Student::class);
     }
 }

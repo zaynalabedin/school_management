@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\User;
+use App\Models\Department;
+use App\Models\Designation;
+use App\Models\Dssignation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -23,14 +27,16 @@ class TeacherController extends Controller
     public function index()
     {
 
-        $teachers = Teacher::with('user')->get();
+        $teachers = Teacher::with('user','designation','department')->get();
 
         return view('teachers.index', compact('teachers'));
 
     }
     public function create()
     {
-        return view('teachers.create');
+        $designations = Designation::get();
+        $departments = Department::get();
+        return view('teachers.create', compact(['departments','designations']));
     }
     public function store(Request $request)
     {
@@ -38,6 +44,8 @@ class TeacherController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'designation' => 'required',
+            'department' => 'required',
             'number' => 'required',
             'date_of_birth' => 'required',
             'current_addres',
@@ -64,6 +72,8 @@ class TeacherController extends Controller
 
         $teachers->user_id = $users->id;
         $teachers->number = $request->input('number');
+        $teachers->designation_id = $request->input('designation');
+        $teachers->department_id = $request->input('department');
         $teachers->date_of_birth = $request->input('date_of_birth');
         $teachers->current_addres = $request->input('current_addres');
         $teachers->permanent_address = $request->input('permanent_address');
@@ -75,22 +85,24 @@ class TeacherController extends Controller
     {
 
 
-        $data = User::with('teacher')->where('id', $id)->first();
+        $teacher = Teacher::with('user')->where('id', $id)->first();
 
-        return view('teachers.show', compact('data'));
+        return view('teachers.show', compact('teacher'));
     }
 
     public function edit($id)
     {
-        $user = User::with('teacher')->where('id', $id)->first();
+        $teacher = Teacher::with('user')->where('id', $id)->first();
 
-        return view('teachers.edit', compact('user'));
+        return view('teachers.edit', compact('teacher'));
     }
 
     public function update(Request $request, $id)
     {
-        $users = User::find($id);
 
+        $teacher = Teacher::find($id);
+
+        $users = User::where('id', $teacher->user_id)->first();
         $users->name = $request->input('name');
         $users->email = $request->input('email');
         if ($request->input('password') != '') {
@@ -107,30 +119,26 @@ class TeacherController extends Controller
             $images->move($destinationPath, $teacherImages);
             $users['image'] = $teacherImages;
         }
-
         $users->save();
 
-        $teacher = Teacher::find($id);
-
-        $teacher->user_id = $users->id;
         $teacher->number = $request->input('number');
+        $teacher->designation = $request->input('designation');
+        $teacher->department = $request->input('department');
         $teacher->date_of_birth = $request->input('date_of_birth');
         $teacher->current_addres = $request->input('current_addres');
         $teacher->permanent_address = $request->input('permanent_address');
 
         $teacher->save();
-        return back();
+        return redirect('teachers');
 
     }
     public function destroy($id)
     {
-
-        $teachers = User::find($id);
-
-        $teachers->delete();
-
         $teachers = Teacher::find($id);
+        dd($teachers);
+        $users = User::where('id', $teachers->user_id)->first();
 
+        $users->delete();
         $teachers->delete();
         return back();
 

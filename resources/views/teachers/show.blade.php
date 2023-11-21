@@ -8,20 +8,17 @@
                     <div class="card-body">
 
 
-                        @if (Auth::user()->user_type == 'admin')
-                            <p><img src="{{ asset('public/images/' . $data->image) }}" style="height: 80px; width:90px;"></p>
-                            <p>{{ $data->name }}</p>
-                            <p>{{ $data->email }}</p>
-                        @else
-                        <p><img src="{{ asset('public/images/' . $data->image) }}" style="height: 80px; width:90px;"></p>
-                        <p>{{ $data->name }}</p>
-                        <p>{{ $data->email }}</p>
 
-                        <p>{{ $data->teacher->number }}</p>
-                        <p>{{ $data->teacher->date_of_birth }}</p>
-                        <p>{{ $data->teacher->current_addres }}</p>
-                        <p>{{ $data->teacher->permanent_address }}</p>
-                        @endif
+                        <p><img src="{{ asset('public/images/' . $teacher->user->image) }}" style="height: 80px; width:90px;"></p>
+                        <p>{{ $teacher->user->name }}</p>
+                        <p>{{ $teacher->user->email }}</p>
+                        <p>{{ $teacher->designation->name }}</p>
+                        <p>{{ $teacher->department->name }}</p>
+                        <p>{{ $teacher->number }}</p>
+                        <p>{{ $teacher->date_of_birth }}</p>
+                        <p>{{ $teacher->current_addres }}</p>
+                        <p>{{ $teacher->permanent_address }}</p>
+
                     </div>
                 </div>
             </div>

@@ -60,7 +60,7 @@
                 </form>
 
                 <div class="dropdown-divider"></div>
-                <a href="{{ route('teachers.show',Auth::user()->id) }}" class="dropdown-item">
+                <a href="{{ route('profiles.profile',Auth::user()->id) }}" class="dropdown-item">
                     <i class="fas fa-users mr-2"></i>Profile
 
                 </a>

@@ -34,7 +34,7 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column"  role="menu"
+            <ul class="nav me-auto nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
@@ -54,10 +54,17 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ Route('students.index') }}" class="nav-link">
+                            <a href="#" class="nav-link" aria-expanded="false" role="button">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Students</p>
+                                <p> Students <i class="fas fa-angle-left right"></i></p>
                             </a>
+                            <ul class="nav nav-treeview ">
+                                <li class="nav-item"><a class="nav-link active" href="{{ Route('students.classSixStudents') }}"><i class="fa fa-arrow-right"></i>  ৬ষ্ঠ শ্রেণী</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ Route('students.classSeven') }}"><i class="fa fa-arrow-right"></i>  ৭ম শ্রেণী</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ Route('students.classEight') }}"><i class="fa fa-arrow-right"></i>  ৮ম শ্রেণী</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ Route('students.classNine') }}"><i class="fa fa-arrow-right"></i>  ৯ম শ্রেণী</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ Route('students.classTen') }}"><i class="fa fa-arrow-right"></i>  ১০ম শ্রেণী</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="{{ Route('courses.index') }}" class="nav-link">
@@ -93,6 +100,48 @@
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Exam Questions</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Notice</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Routine</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ Route('departments.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Teacher Department</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ Route('designations.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Teacher Designation</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ Route('groups.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Student Group</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>President</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Vice-President</p>
                             </a>
                         </li>
 

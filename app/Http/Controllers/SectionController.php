@@ -8,16 +8,21 @@ use App\Models\Course;
 
 class SectionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
     public function index()
     {
         // $subjects = Course::get();
-        $sections = Section::with('course')->get();
+        $sections = Section::get();
         return view('sections.index', compact('sections'));
     }
     public function create()
     {
-        $courses= Course::get();
-        return view('sections.create',compact('courses'));
+
+        return view('sections.create');
     }
 
     public function store(Request $request)
@@ -26,7 +31,7 @@ class SectionController extends Controller
 
         $sections = new Section();
 
-        $sections->course_id=$request->input('choosed');
+
 
         $sections->name = $request->input('name');
 // dd($subjects);
@@ -43,7 +48,7 @@ class SectionController extends Controller
     public function update(Request $request, $id)
     {
         $section = Section::find($id);
-        $section->course_id=$request->input('choosed');
+        
         $section->name = $request->input('name');
         $section->save();
 

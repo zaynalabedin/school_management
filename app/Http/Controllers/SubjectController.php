@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
     public function index()
     {
         // $subjects = Course::get();
@@ -22,14 +27,14 @@ class SubjectController extends Controller
     }
     public function store(Request $request)
     {
-        // $course= new Course();
+
 
         $subjects = new Subject();
 
         $subjects->course_id=$request->input('choosed');
 
         $subjects->name = $request->input('name');
-// dd($subjects);
+
         $subjects->save();
 
         return redirect('subjects');
@@ -47,8 +52,7 @@ class SubjectController extends Controller
         $subject->name = $request->input('name');
         $subject->save();
 
-        return redirect()->back();
-    }
+        return redirect()->back(); }
     public function destroy($id)
     {
         $subjects = Subject::find($id);

@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DesignationController;
+use App\Http\Controllers\GroupController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +31,11 @@ Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard')->middleware('adminAuth');
 
+Route::get('/user/profile/{id}', [DashboardController::class, 'profile'])->name('profiles.profile');
 
 Route::get('/teachers/dashboard', [App\Http\Controllers\TeacherController::class, 'dashboard'])->name('teachers.dashboard')->middleware('teacherAuth');
+
+Route::get('/students/dashboard', [App\Http\Controllers\StudentController::class, 'dashboard'])->name('students.dashboard')->middleware('studentAuth');
 
 // Route::get('/students/dashboard', [App\Http\Controllers\StudentController::class, 'dashboard'])->name('students.dashboard');
 
@@ -54,6 +62,14 @@ Route::get('/students/edit/{id}', [App\Http\Controllers\StudentController::class
 Route::put('/students/{update}', [App\Http\Controllers\StudentController::class, 'update'])->name('students.update');
 Route::get('/students/show/{id}', [App\Http\Controllers\StudentController::class, 'show'])->name('students.show');
 Route::delete('/students/{destroy}', [App\Http\Controllers\StudentController::class, 'destroy'])->name('students.destroy');
+
+Route::get('/class_six', [StudentController::class, 'class_six'])->name('students.classSixStudents');
+Route::get('/class_seven', [StudentController::class, 'class_seven'])->name('students.classSeven');
+Route::get('/class_eight', [StudentController::class, 'class_eight'])->name('students.classEight');
+Route::get('/class_nine', [StudentController::class, 'class_nine'])->name('students.classNine');
+Route::get('/class_ten', [StudentController::class, 'class_ten'])->name('students.classTen');
+
+
 
 //Sections Route
 
@@ -97,18 +113,40 @@ Route::delete('/exams/{destroy}', [App\Http\Controllers\ExamController::class, '
 
 //Questions Route
 
-Route::get('/questions', [App\Http\Controllers\QuestionController::class, 'index'])->name('questions.index');
-Route::get('/questions/create', [App\Http\Controllers\QuestionController::class, 'create'])->name('questions.create');
-Route::post('/questions', [App\Http\Controllers\QuestionController::class, 'store'])->name('questions.store');
-Route::get('/questions/edit/{id}', [App\Http\Controllers\QuestionController::class, 'edit'])->name('questions.edit');
-Route::put('/questions/{update}', [App\Http\Controllers\QuestionController::class, 'update'])->name('questions.update');
+Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
+Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');
+Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');
+Route::get('/questions/show/{id}', [QuestionController::class, 'show'])->name('questions.show');
+Route::get('/questions/edit/{id}', [QuestionController::class, 'edit'])->name('questions.edit');
+Route::put('/questions/{update}', [QuestionController::class, 'update'])->name('questions.update');
 
-Route::delete('/questions/{destroy}', [App\Http\Controllers\QuestionController::class, 'destroy'])->name('questions.destroy');
-
-
-
+Route::delete('/questions/{destroy}', [QuestionController::class, 'destroy'])->name('questions.destroy');
 
 
+// Department Route
+
+Route::get('/departments', [DepartmentController::class, 'index'])->name('departments.index');
+Route::get('/departments/create', [DepartmentController::class, 'create'])->name('departments.create');
+Route::post('/departments-store', [DepartmentController::class, 'store'])->name('departments.store');
+Route::get('/departments/edit/{id}', [DepartmentController::class, 'edit'])->name('departments.edit');
+Route::put('/departments/{update}', [DepartmentController::class, 'update'])->name('departments.update');
+Route::delete('/departments/{destroy}', [DepartmentController::class, 'destroy'])->name('departments.destroy');
+
+//Designation Route
+Route::get('/designations', [DesignationController::class, 'index'])->name('designations.index');
+Route::get('/designations/create', [DesignationController::class, 'create'])->name('designations.create');
+Route::post('/designations-store', [DesignationController::class, 'store'])->name('designations.store');
+Route::get('/designations/edit/{id}', [DesignationController::class, 'edit'])->name('designations.edit');
+Route::put('/designations/{update}', [DesignationController::class, 'update'])->name('designations.update');
+Route::delete('/designations/{destroy}', [DesignationController::class, 'destroy'])->name('designations.destroy');
+
+//Groups Route
+Route::get('/groups', [GroupController::class, 'index'])->name('groups.index');
+Route::get('/groups/create', [GroupController::class, 'create'])->name('groups.create');
+Route::post('/groups-store', [GroupController::class, 'store'])->name('groups.store');
+Route::get('/groups/edit/{id}', [GroupController::class, 'edit'])->name('groups.edit');
+Route::put('/groups/{update}', [GroupController::class, 'update'])->name('groups.update');
+Route::delete('/groups/{destroy}', [GroupController::class, 'destroy'])->name('groups.destroy');
 
 // Route::group(['prefix'=>'admin'],function(){
 //     Route::view('/login', 'admin.login')->name('admin.login');

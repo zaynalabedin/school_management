@@ -7,10 +7,12 @@
         <div class="card">
             <div class="row"></div>
             <div class="card-body">
-                <table class="table">
-                    <thead>
-                        <tr>
+                <table class="table table-responsive table-responsive-sm table-responsive-md table-responsive-lg text-capitalize text-center">
+
+                        <tr class="table-dark table-active text-uppercase text-white font-weight-normal" style="font-size: 12px">
                             <th>Name</th>
+                            <th>Designation</th>
+                            <th>Department</th>
                             <th>Email</th>
                             <th>Number</th>
                             <th>Date of Birth</th>
@@ -19,23 +21,16 @@
                             <th>Images</th>
                             <th>Action</th>
                         </tr>
-                    </thead>
-                    <tbody>
+
+
                         {{-- @foreach ($users as $user) --}}
                         @foreach ($teachers as $teacher)
-                            <tr>
+                            <tr style="font-size: 14px">
 
-                                {{-- <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->teacher->number }}</td>
-                                <td>{{ $user->teacher->date_of_birth }}</td>
-                                <td>{{ $user->teacher->current_addres }}</td>
-                                <td>{{ $user->teacher->permanent_address }}</td>
-                                <td>
-                                    <img src="{{ asset('public/images/' . $user->image) }}"
-                                        style="height: 80px; width:120px;">
-                                </td> --}}
+
                                 <td>{{ $teacher->user->name }}</td>
+                                <td>{{ $teacher->designation->name }}</td>
+                                <td>{{ $teacher->department->name }}</td>
                                 <td>{{ $teacher->user->email }}</td>
                                 <td>{{ $teacher->number }}</td>
                                 <td>{{ $teacher->date_of_birth }}</td>
@@ -43,24 +38,22 @@
                                 <td>{{ $teacher->permanent_address }}</td>
                                 <td>
                                     <img src="{{ asset('public/images/' . $teacher->user->image) }}"
-                                        style="height: 80px; width:120px;">
+                                        style="height: 50px; width:100%;">
                                 </td>
                                 <td>
                                     <form class="mt-2" action="{{ route('teachers.destroy', $teacher->id) }}"
                                         method="POST">
-                                        <a class="btn btn-info"
-                                            href="{{ route('teachers.show', $teacher->id) }}">Show</a>
-                                        <a class="btn btn-warning" href="{{ route('teachers.edit', $teacher->id) }}"
-                                            target="_blank">Edit</a>
+                                        <a href="{{ route('teachers.show', $teacher->id) }}"><i class="fa fa-eye"></i></a>
+                                        <a href="{{ route('teachers.edit', $teacher->id) }}" target="_blank"><i class="fa fa-edit" style="color: #f5e52e;"></i></a>
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <i type="submit"><i class="fa fa-trash" style="color: red"></i></i>
                                     </form>
 
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody>
+
                 </table>
             </div>
         </div>
